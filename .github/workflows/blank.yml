@@ -46,7 +46,7 @@ jobs:
           echo ${{ github.sha }}
           export image="pn-portal-backend"
           export sha="[0-9a-f]{5,40}"
-          export new_sha="WORKS"
+          export new_sha=${{ github.sha }}
           sed -i -E "s/$image:$sha/$image:$new_sha/g" checkout.tf
           git add .
           git commit -m "update"
