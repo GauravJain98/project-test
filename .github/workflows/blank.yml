@@ -34,7 +34,8 @@ jobs:
         with:
           repository: GauravJain98/gitops-test
           path: gitops
-    
+          token: ${{ secrets.GH_PAT }}    
+      
       - name: Run a multi-line script
         run: |
           cd gitops
