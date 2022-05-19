@@ -41,9 +41,13 @@ jobs:
           cd gitops
           git config user.name github-actions
           git config user.email github-actions@github.com
-          echo "ran 2" >> README.md
+          echo "ran 3" >> README.md
           echo ${{ github.event.before }}
           echo ${{ github.sha }}
+          export image="pn-portal-backend"
+          export sha="[0-9a-f]{5,40}"
+          export new_sha="WORKS"
+          sed -E "s/$image:$sha/$image:$new_sha/g" checkout.tf
           git add .
           git commit -m "update"
           git push origin master
