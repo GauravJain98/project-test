@@ -41,7 +41,7 @@ jobs:
           cd gitops
           git config user.name github-actions
           git config user.email github-actions@github.com
-          echo "ran 1" >> README.md
+          echo "ran 2" >> README.md
           echo ${{ github.event.before }}
           echo ${{ github.sha }}
           git add .
