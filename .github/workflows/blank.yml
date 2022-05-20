@@ -15,6 +15,7 @@ on:
 env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: pn-portal-backend           # set this to your Amazon ECR repository name
+  INFRA_REPO: gitops-test
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,13 +36,13 @@ jobs:
       # Runs a set of commands using the runners shell
       - uses: actions/checkout@v3
         with:
-          repository: GauravJain98/gitops-test
-          path: gitops
+          repository: ${{github.repository_owner}}/$INFRA_REPO
+          path: $INFRA_REPO
           token: ${{ secrets.GH_PAT }}    
       
-      - name: Run a multi-line script
+      - name: Push changes to ${{github.repository_owner}}/$INFRA_REPO
         run: |
-          cd gitops
+          cd $INFRA_REPO
           git config user.name github-actions
           git config user.email github-actions@github.com
           echo "ran 5" >> README.md
