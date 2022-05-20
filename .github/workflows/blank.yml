@@ -50,7 +50,7 @@ jobs:
           export new_sha=${{ github.sha }}
           sed -i -E "s/$ECR_REPOSITORY:$sha/$ECR_REPOSITORY:$new_sha/g" ./portal-backend-uat/main.tf
           git add .
-          git commit -m "update"
+          git commit -m "update $ECR_REPOSITORY:$new_sha"
           git push origin master
           echo Add other actions to build,
           echo test, and deploy your project.
